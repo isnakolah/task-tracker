@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Header from './components/Header';
-import Tasks from './components/Tasks';
+import TasksList from './components/TasksList';
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -28,7 +28,7 @@ function App() {
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={tasks} />
+      <TasksList tasks={tasks} />
     </div>
   );
 }
