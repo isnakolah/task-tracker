@@ -1,12 +1,29 @@
 import { useState } from 'react';
 
-const AddTask = () => {
+const AddTask = ({ onAdd }) => {
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
   const [reminder, setReminder] = useState(false);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (!text) {
+      alert('Please add a task');
+      return;
+    }
+
+    // Create an object to
+    onAdd({ text, day, reminder });
+
+    // Clear the form
+    setText('');
+    setDay('');
+    setReminder('');
+  };
+
   return (
-    <form className='add-form'>
+    <form className='add-form' onSubmit={onSubmit}>
       <div className='form-control'>
         <label htmlFor='task'>Task</label>
         <input
@@ -31,6 +48,7 @@ const AddTask = () => {
         <label htmlFor='setreminder'>Set Reminder</label>
         <input
           type='checkbox'
+          checked={reminder}
           name='setreminder'
           value={reminder}
           onChange={(e) => setReminder(e.currentTarget.checked)}
