@@ -5,6 +5,7 @@ import TasksList from './components/TasksList';
 import AddTask from './components/AddTask';
 
 function App() {
+  const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -40,10 +41,17 @@ function App() {
     );
   };
 
+  // Add Task
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newTask = { id, ...task };
+
+    setTasks([...tasks, newTask]);
+  };
   return (
     <div className='container'>
       <Header />
-      <AddTask />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <TasksList
           tasks={tasks}
