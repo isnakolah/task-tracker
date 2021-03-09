@@ -110,3 +110,12 @@ footer {
   margin-top: 30px;
   text-align: center;
 }
+
+.column-right {
+  float: right;
+  width: 20%;
+}
+
+.column-left {
+  width: 80%;
+}
