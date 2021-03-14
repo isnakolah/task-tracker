@@ -1,7 +1,11 @@
 import { FaTimes } from 'react-icons/fa';
 import { AiTwotoneEdit } from 'react-icons/ai';
 
-const Task = ({ task, onDelete, onToggle }) => {
+const Task = ({ task, onUpdate, onDelete, onToggle }) => {
+  const updateTask = () => {
+    onUpdate();
+  };
+
   return (
     <div
       className={`task ${task.reminder ? 'reminder' : ''}`}
@@ -9,7 +13,7 @@ const Task = ({ task, onDelete, onToggle }) => {
       <h3>
         <div className='column-left'>{task.text}</div>
         <div className='column-right'>
-          <AiTwotoneEdit />
+          <AiTwotoneEdit style={{ color: 'green' }} onClick={updateTask} />
           <FaTimes
             style={{ color: 'red', float: 'right' }}
             onClick={() => onDelete(task.id)}

@@ -35,6 +35,10 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const updateTask = () => {
+    console.log('This is just updating a task');
+  };
+
   // Toggle Reminder
   const toggleReminder = (id) => {
     setTasks(
@@ -61,6 +65,7 @@ function App() {
           tasks={tasks}
           onDelete={deleteTask}
           onToggle={toggleReminder}
+          onUpdate={updateTask}
         />
       ) : (
         'No tasks to show'
